@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS sells (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   current_status status DEFAULT 'not_payed' NOT NULL,
   client_id  INTEGER NOT NULL REFERENCES clients(id),
-  total DECIMAL(13,  3),
+  total DECIMAL(13,  3) DEFAULT 0.000 NOT NULL,
   recharged_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP + INTERVAL '30 days' NOT NULL
 );
 
@@ -17,4 +17,5 @@ INSERT INTO clients (email)
 VALUES('mimail@mail.com'),
               ('test2@email'),
               ('kenderB@mail.com');
-INSERT INTO sells VALUES();
+INSERT INTO sells (client_id) 
+VALUES(1);
